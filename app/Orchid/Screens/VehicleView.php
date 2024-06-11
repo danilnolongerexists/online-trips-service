@@ -81,6 +81,12 @@ class VehicleView extends Screen
                   ->render(function (Vehicle $vehicle){
                     return $vehicle->category;
                   }),
+                TD::make('price', __('Price'))
+                  ->sort()
+                  ->filter(Input::make())
+                  ->render(function (Vehicle $vehicle){
+                    return $vehicle->price;
+                  }),
                 TD::make('status', __('Status'))
                   ->sort()
                   ->filter(Input::make())

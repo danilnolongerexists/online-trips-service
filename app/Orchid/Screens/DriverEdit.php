@@ -2,30 +2,28 @@
 
 namespace App\Orchid\Screens;
 
-use App\Models\Vehicle;
+use App\Models\Driver;
 use Orchid\Screen\Screen;
 use Orchid\Support\Facades\Layout;
 use Orchid\Screen\Fields\Input;
 use Orchid\Screen\Fields\Relation;
-use App\Models\Category;
-use App\Models\Driver;
 use Orchid\Screen\Actions\Button;
 use Orchid\Support\Facades\Alert;
 use Illuminate\Http\Request;
 
 
-class VehicleEdit extends Screen
+class DriverEdit extends Screen
 {
-    public $vehicle;
+    public $driver;
     /**
      * Fetch data to be displayed on the screen.
      *
      * @return array
      */
-    public function query(Vehicle $vehicle): iterable
+    public function query(Driver $driver): iterable
     {
         return [
-        'vehicle' => $vehicle];
+        'driver' => $driver];
     }
 
     /**
@@ -35,7 +33,7 @@ class VehicleEdit extends Screen
      */
     public function name(): ?string
     {
-        return $this->vehicle->exists ? 'Edit vehicle' : 'Creating a new vehicle';
+        return $this->driver->exists ? 'Edit vehicle' : 'Creating a new vehicle';
     }
 
     /**
@@ -49,17 +47,17 @@ class VehicleEdit extends Screen
             Button::make('Create product')
                 ->icon('pencil')
                 ->method('createOrUpdate')
-                ->canSee(!$this->vehicle->exists),
+                ->canSee(!$this->driver->exists),
 
             Button::make('Update')
                 ->icon('note')
                 ->method('createOrUpdate')
-                ->canSee($this->vehicle->exists),
+                ->canSee($this->driver->exists),
 
             Button::make('Remove')
                 ->icon('trash')
                 ->method('remove')
-                ->canSee($this->vehicle->exists),
+                ->canSee($this->driver->exists),
         ];
     }
 
@@ -72,38 +70,33 @@ class VehicleEdit extends Screen
     {
         return [
             Layout::rows([
-                Input::make('vehicle.model')
-                    ->title('Model'),
-                Input::make('vehicle.brand')
-                    ->title('Brand'),
-                Input::make('vehicle.year')
-                    ->title('Year'),
-                Input::make('vehicle.category')
-                    ->title('Category'),
-                Input::make('vehicle.price')
-                    ->title('Price'),
-                Relation::make('vehicle.driver_id')
-                    ->title('Driver ID')
-                    ->fromModel(Driver::class, 'name', 'id'),
+                Input::make('driver.name')
+                    ->title('Name'),
+                Input::make('driver.experience')
+                    ->title('Experience'),
+                Input::make('driver.phone')
+                    ->title('Phone'),
+                Input::make('driver.license_number')
+                    ->title('License_number'),
             ])
         ];
     }
 
     public function createOrUpdate(Request $request)
     {
-        $this->vehicle->fill($request->get('vehicle'))->save();
+        $this->driver->fill($request->get('driver'))->save();
 
-        Alert::info('You have successfully created a vehicle.');
+        Alert::info('You have successfully created a driver.');
 
-        return redirect()->route('platform.vehicles');
+        return redirect()->route('platform.drivers');
     }
 
     public function remove()
     {
-        $this->vehicle->delete();
+        $this->driver->delete();
 
-        Alert::info('You have successfully deleted the vehicle.');
+        Alert::info('You have successfully deleted the driver.');
 
-        return redirect()->route('platform.vehicles');
+        return redirect()->route('platform.drivers');
     }
 }

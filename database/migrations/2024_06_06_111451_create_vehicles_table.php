@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string('brand');
             $table->integer('year');
             $table->string('category');
+            $table->integer('price');
             $table->enum('status', ['available', 'unavailable'])->default('available');
             $table->foreignId('driver_id')->references('id')->on('drivers');
             $table->timestamps();

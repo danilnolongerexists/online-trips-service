@@ -16,7 +16,8 @@ class Vehicle extends Model
         'year',
         'category',
         'status',
-        'driver_id'
+        'driver_id',
+        'price'
     ];
 
     public function driver()

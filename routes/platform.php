@@ -2,6 +2,8 @@
 
 declare(strict_types=1);
 
+use App\Orchid\Screens\DriverEdit;
+use App\Orchid\Screens\DriverView;
 use App\Orchid\Screens\Examples\ExampleActionsScreen;
 use App\Orchid\Screens\Examples\ExampleCardsScreen;
 use App\Orchid\Screens\Examples\ExampleChartsScreen;
@@ -106,3 +108,6 @@ Route::screen('/examples/cards', ExampleCardsScreen::class)->name('platform.exam
 //Route::screen('idea', Idea::class, 'platform.screens.idea');
 Route::screen('/vehicles', VehicleView::class)->name('platform.vehicles');
 Route::screen('/vehicle/{vehicle?}', VehicleEdit::class)->name('platform.vehicle.edit');
+
+Route::screen('/drivers', DriverView::class)->name('platform.drivers');
+Route::screen('/driver/{driver?}', DriverEdit::class)->name('platform.driver.edit');
