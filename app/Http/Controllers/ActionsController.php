@@ -19,7 +19,6 @@ class ActionsController extends Controller
             'user.name' => 'required',
             'user.email' => 'required|email|unique:users,email',
             'user.password' => 'required|min:8|alpha_dash|confirmed',
-            'user.phone' => 'required|integer|unique:users,phone',
         ], [
             'user.name.required' => 'Поле "Имя" обязательно для заполнения',
             'user.email.reqired' => 'Поле "Электронная почта" обязательно для заполнения',
@@ -28,8 +27,6 @@ class ActionsController extends Controller
             'user.password.min'=> 'Поле "Пароль" должно быть не менее, чем 8 символов',
             'user.password.alpha_dash'=> 'Поле "Пароль" должно содержать только строчные и прописные символы латиницы, цифры, а также символы "-" и "_"',
             'user.password.confirmed'=> 'Поле "Пароль" и "Повторите пароль" не совпадает',
-            'user.phone.required' => 'Поле "Возраст" обязательно для заполнения',
-            'user.phone.integer' => 'Поле "Возраст" должно быть предоставлено в виде числа',
         ]);
 
         $user = User::create($request -> input('user'));

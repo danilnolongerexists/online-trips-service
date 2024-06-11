@@ -13,9 +13,9 @@ return new class extends Migration
     {
         Schema::create('trips', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->constrained('users');
-            $table->foreignId('vehicle_id')->constrained('vehicles');
-            $table->foreignId('driver_id')->constrained('drivers');
+            $table->foreignId('user_id')->references('id')->on('users');
+            $table->foreignId('vehicle_id')->references('id')->on('vehicles');
+            $table->foreignId('driver_id')->references('id')->on('drivers');
             $table->timestamp('order_date')->useCurrent();
             $table->timestamp('trip_date')->nullable();
             $table->string('start_location');

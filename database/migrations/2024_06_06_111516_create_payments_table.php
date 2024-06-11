@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('payments', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('trip_id')->constrained('trips');
+            $table->foreignId('trip_id')->references('id')->on('trips');
             $table->decimal('amount', 10, 2);
             $table->enum('payment_method', ['online', 'cash']);
             $table->timestamp('payment_date')->useCurrent();

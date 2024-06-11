@@ -21,11 +21,6 @@
                         </div>
 
                         <div class="form-group">
-                            <label for="age">Номер телефона</label>
-                            <input type="tel" class="form-control" id="phone" placeholder="Введите ваш номер телефона" required name="user[phone]">
-                        </div>
-
-                        <div class="form-group">
                             <label for="password">Пароль</label>
                             <input type="password" class="form-control" id="password" placeholder="Введите пароль" required name="user[password]">
                         </div>

@@ -17,6 +17,8 @@ use App\Orchid\Screens\Role\RoleListScreen;
 use App\Orchid\Screens\User\UserEditScreen;
 use App\Orchid\Screens\User\UserListScreen;
 use App\Orchid\Screens\User\UserProfileScreen;
+use App\Orchid\Screens\VehicleEdit;
+use App\Orchid\Screens\VehicleView;
 use Illuminate\Support\Facades\Route;
 use Tabuna\Breadcrumbs\Trail;
 
@@ -102,3 +104,5 @@ Route::screen('/examples/charts', ExampleChartsScreen::class)->name('platform.ex
 Route::screen('/examples/cards', ExampleCardsScreen::class)->name('platform.example.cards');
 
 //Route::screen('idea', Idea::class, 'platform.screens.idea');
+Route::screen('/vehicles', VehicleView::class)->name('platform.vehicles');
+Route::screen('/vehicle/{vehicle?}', VehicleEdit::class)->name('platform.vehicle.edit');
