@@ -15,7 +15,6 @@ class Vehicle extends Model
         'brand',
         'year',
         'category',
-        'status',
         'driver_id',
         'price'
     ];

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Basket;
+use App\Models\Trip;
 use App\Models\Vehicle;
 use Orchid\Attachment\Models\Attachment;
 
@@ -36,17 +37,15 @@ class ViewsController extends Controller
     //     return view("pages.profile");
     // }
 
-    // public function basket()
-    // {
-    //     return view("pages.basket", [
-    //         'products' => Basket::all(),
-    //     ]);
-    // }
+    public function orders()
+    {
+        return view("pages.orders");
+    }
 
-    // public function category(Category $category)
-    // {
-    //     return view("pages.category", [
-    //         'category' => $category,
-    //     ]);
-    // }
+    public function vehicle(Vehicle $vehicle)
+    {
+        return view("pages.vehicle", [
+            'vehicle' => $vehicle,
+        ]);
+    }
 }

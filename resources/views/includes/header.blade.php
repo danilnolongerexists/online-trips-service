@@ -14,7 +14,7 @@
 <body>
     <div class="container">
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
-            <a class="navbar-brand" href="{{ route('index') }}">Главная</a>
+            <a class="navbar-brand" href="{{ route('index') }}">Заказать такси</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -22,8 +22,9 @@
                 <ul class="navbar-nav">
                     @auth
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('profile') }}">Заказать такси</a>
+                            <a class="nav-link" href="{{ route('orders') }}">Заказы</a>
                         </li>
+
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('logout') }}">Выход</a>
                         </li>

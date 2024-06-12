@@ -14,4 +14,6 @@ Route::get('/login', [ViewsController::class, 'login'])->name('login')->middlewa
 Route::post('/register', [ActionsController::class, 'register']);
 Route::post('/login', [ActionsController::class, 'login']);
 Route::get('/logout', [ActionsController::class, 'logout'])->name('logout')->middleware('auth');
-Route::get('/profile', [ViewsController::class, 'profile'])->name('profile')->middleware('auth');
+// Route::get('/profile', [ViewsController::class, 'profile'])->name('profile')->middleware('auth');
+Route::get('/vehicle/{vehicle}', [ViewsController::class, 'vehicle'])->name('vehicle.show');
+Route::get('/orders', [ViewsController::class, 'orders'])->name('orders')->middleware('auth');
