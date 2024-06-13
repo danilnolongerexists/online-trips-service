@@ -10,27 +10,27 @@
             <p class="card-title">Водитель: {{ $vehicle->driver->name }}</p>
             <p class="card-title">Цена: {{ $vehicle->price }} руб.</p>
 
-            <form method="POST">
+            <form action="{{ route('order.checkout', $vehicle) }}" method="POST">
                 @csrf
                 <div class="form-group">
                     <label for="address">Откуда?</label>
-                    <input type="text" class="form-control" id="address" name="address" value="{{ Auth::user()->address }}" required>
+                    <input type="text" class="form-control" id="start_location" name="start_location" value="" required>
                 </div>
                 <div class="form-group">
                     <label for="address">Куда?</label>
-                    <input type="text" class="form-control" id="address" name="address" value="{{ Auth::user()->address }}" required>
+                    <input type="text" class="form-control" id="end_location" name="end_location" value="" required>
                 </div>
 
                 <fieldset>
                     <legend>Выберите способ оплаты:</legend>
 
                     <div>
-                      <input type="radio" id="cash" name="payment" value="huey" />
+                      <input type="radio" id="cash" name="payment" value="cash"  />
                       <label for="cash">Наличные</label>
                     </div>
 
                     <div>
-                      <input type="radio" id="card" name="payment" value="dewey" />
+                      <input type="radio" id="card" name="payment" value="card" />
                       <label for="card">По карте</label>
                     </div>
 

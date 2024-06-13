@@ -4,6 +4,7 @@ use App\Models\User;
 use App\Http\Controllers\ViewsController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ActionsController;
+use App\Http\Controllers\OrderController;
 
 // Route::get('/', function () {
 //     return view('index');
@@ -17,3 +18,4 @@ Route::get('/logout', [ActionsController::class, 'logout'])->name('logout')->mid
 // Route::get('/profile', [ViewsController::class, 'profile'])->name('profile')->middleware('auth');
 Route::get('/vehicle/{vehicle}', [ViewsController::class, 'vehicle'])->name('vehicle.show');
 Route::get('/orders', [ViewsController::class, 'orders'])->name('orders')->middleware('auth');
+Route::post('/checkout/{vehicle}', [OrderController::class, 'checkout'])->name('order.checkout')->middleware('auth');

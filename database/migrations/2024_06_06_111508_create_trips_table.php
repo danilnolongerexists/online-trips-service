@@ -15,12 +15,10 @@ return new class extends Migration
             $table->id();
             $table->foreignId('user_id')->references('id')->on('users');
             $table->foreignId('vehicle_id')->references('id')->on('vehicles');
-            $table->foreignId('driver_id')->references('id')->on('drivers');
             $table->timestamp('order_date')->useCurrent();
-            $table->timestamp('trip_date')->nullable();
             $table->string('start_location');
             $table->string('end_location');
-            $table->enum('status', ['in_progress', 'completed', 'cancelled'])->default('in_progress');
+            $table->string('payment');
             $table->timestamps();
         });
     }

@@ -12,12 +12,10 @@ class Trip extends Model
     protected $fillable = [
         'user_id',
         'vehicle_id',
-        'driver_id',
         'order_date',
-        'trip_date',
         'start_location',
         'end_location',
-        'status'
+        'payment'
     ];
 
     public function user()
@@ -35,8 +33,4 @@ class Trip extends Model
         return $this->belongsTo(Driver::class);
     }
 
-    public function payment()
-    {
-        return $this->hasOne(Payment::class);
-    }
 }
