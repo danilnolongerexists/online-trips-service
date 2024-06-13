@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Trip;
 use Illuminate\Http\Request;
 use App\Models\Vehicle;
+use Illuminate\Support\Facades\Auth;
 
 class OrderController extends Controller
 {
@@ -23,4 +24,5 @@ class OrderController extends Controller
 
         return redirect()->route('index')->with('success', 'Заказ оформлен');
     }
+
 }

@@ -8,11 +8,12 @@
             <div class="card my-2">
                 <div class="card-body">
                     <h5 class="card-title">Заказ #{{ $trip->id }}</h5>
-                    <p class="card-text">Машина {{ $trip->vehicle_id }}</p>
+                    <p class="card-text">Машина: {{ $trip->vehicle->model }}</p>
+                    <p class="card-text">Водитель: {{ $trip->vehicle->driver->name }}</p>
+                    <p class="card-text">Стаж: {{ $trip->vehicle->driver->experience }} лет</p>
                     <p class="card-text">Откуда? {{ $trip->start_location }}</p>
                     <p class="card-text">Куда? {{ $trip->end_location }}</p>
                     <p class="card-text">Дата заказа: {{ $trip->order_date }}</p>
-                    <p class="card-text">Куда? {{ $trip->end_location }}</p>
                     <p class="card-text">Тип оплаты: {{ $trip->payment }}</p>
                 </div>
             </div>

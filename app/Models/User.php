@@ -69,4 +69,10 @@ class User extends Authenticatable
         'updated_at',
         'created_at',
     ];
+
+    public function trips()
+    {
+        return $this->hasMany(Trip::class);
+    }
+
 }

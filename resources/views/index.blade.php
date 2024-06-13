@@ -15,6 +15,7 @@
                         <p class="card-title">Год выпуска: {{ $vehicle->year }}</p>
                         <p class="card-title">Кузов: {{ $vehicle->category }}</p>
                         <p class="card-title">Водитель: {{ $vehicle->driver->name }}</p>
+                        <p class="card-title">Стаж: {{ $vehicle->driver->experience }} лет</p>
                         <p class="card-title">Цена: {{ $vehicle->price }} руб.</p>
                         <a href="{{ route('vehicle.show', $vehicle) }}" class="btn btn-primary">Заказать</a>
                     </div>

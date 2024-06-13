@@ -8,6 +8,7 @@
             <p class="card-title">Год выпуска: {{ $vehicle->year }}</p>
             <p class="card-title">Кузов: {{ $vehicle->category }}</p>
             <p class="card-title">Водитель: {{ $vehicle->driver->name }}</p>
+            <p class="card-title">Стаж: {{ $vehicle->driver->experience }}</p>
             <p class="card-title">Цена: {{ $vehicle->price }} руб.</p>
 
             <form action="{{ route('order.checkout', $vehicle) }}" method="POST">
@@ -25,12 +26,12 @@
                     <legend>Выберите способ оплаты:</legend>
 
                     <div>
-                      <input type="radio" id="cash" name="payment" value="cash"  />
+                      <input type="radio" id="cash" name="payment" value="Наличные" />
                       <label for="cash">Наличные</label>
                     </div>
 
                     <div>
-                      <input type="radio" id="card" name="payment" value="card" />
+                      <input type="radio" id="card" name="payment" value="По карте" />
                       <label for="card">По карте</label>
                     </div>
 
