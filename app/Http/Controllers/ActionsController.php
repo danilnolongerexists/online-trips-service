@@ -61,17 +61,17 @@ class ActionsController extends Controller
         }
     }
 
-    // public function create_review(Request $request, $id)
-    // {
-    //     $request->validate([
-    //         'comment' => 'required|string',
-    //         'rating' => 'required|integer|min:1|max:5',
-    //     ]);
+    public function create_review(Request $request, $id)
+    {
+        $request->validate([
+            'comment' => 'required|string',
+            'rating' => 'required|integer|min:1|max:5',
+        ]);
 
-    //     $receipt = Auth::user()->receipts()->findOrFail($id);
+        $trip = Auth::user()->trips()->findOrFail($id);
 
-    //     $receipt->review()->create($request->all());
+        $trip->review()->create($request->all());
 
-    //     return redirect()->route('profile')->with('success', 'Отзыв успешно добавлен');
-    // }
+        return redirect()->route('orders')->with('success', 'Отзыв успешно добавлен');
+    }
 }

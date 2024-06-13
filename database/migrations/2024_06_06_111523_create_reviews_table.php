@@ -12,12 +12,8 @@ return new class extends Migration
     public function up() {
         Schema::create('reviews', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->references('id')->on('users');
-            $table->foreignId('vehicle_id')->references('id')->on('vehicles');
-            $table->foreignId('driver_id')->references('id')->on('drivers');
-            $table->integer('rating')->check(function ($column) {
-                $column->between(1, 5);
-            });
+            $table->foreignId('trip_id')->references('id')->on('trips');
+            $table->integer('rating');
             $table->text('comment')->nullable();
             $table->timestamp('review_date')->useCurrent();
             $table->timestamps();

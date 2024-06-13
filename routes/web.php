@@ -19,3 +19,4 @@ Route::get('/logout', [ActionsController::class, 'logout'])->name('logout')->mid
 Route::get('/vehicle/{vehicle}', [ViewsController::class, 'vehicle'])->name('vehicle.show');
 Route::get('/orders', [ViewsController::class, 'orders'])->name('orders')->middleware('auth');
 Route::post('/checkout/{vehicle}', [OrderController::class, 'checkout'])->name('order.checkout')->middleware('auth');
+Route::post('/orders/{id}/review', [ActionsController::class, 'create_review'])->name('trips.review')->middleware('auth');
