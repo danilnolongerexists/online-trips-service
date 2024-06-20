@@ -3,14 +3,26 @@
 <div class="container">
     <div class="row">
         <div class="col-md-12">
-            <h1 class="my-4">История заказов</h2>
+            <h1 class="my-4">Профиль</h1>
+            <div class="card">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-9">
+                            <h2>{{ Auth::user()->name }}</h2>
+                            <p><b>Email:</b><br>{{ Auth::user()->email }}</p>
+                            <p><b>Дата регистрации:</b><br>{{ Auth::user()->registration_date }}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <h2 class="my-4">История заказов</h2>
             @foreach(Auth::user()->trips as $trip)
             <div class="card my-2">
                 <div class="card-body">
                     <h5 class="card-title">Заказ #{{ $trip->id }}</h5>
-                    <p class="card-text">Машина: {{ $trip->vehicle->model }}</p>
+                    <p class="card-text">Машина: {{ $trip->vehicle->brand }} {{ $trip->vehicle->model }}</p>
                     <p class="card-text">Водитель: {{ $trip->vehicle->driver->name }}</p>
-                    <p class="card-text">Стаж: {{ $trip->vehicle->driver->experience }} лет</p>
+                    <p class="card-text">Стаж (в годах): {{ $trip->vehicle->driver->experience }}</p>
                     <p class="card-text">Откуда? {{ $trip->start_location }}</p>
                     <p class="card-text">Куда? {{ $trip->end_location }}</p>
                     <p class="card-text">Дата заказа: {{ $trip->order_date }}</p>

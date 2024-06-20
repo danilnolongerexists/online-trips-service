@@ -2,8 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Basket;
-use App\Models\Trip;
 use App\Models\Vehicle;
 use Orchid\Attachment\Models\Attachment;
 
