@@ -36,6 +36,7 @@
                         @else
                             <p>Ваш отзыв: {{ $trip->review->comment }}</p>
                             <p>Ваша оценка: {{ $trip->review->rating }} из 5</p>
+                            <p>{{ $trip->review->review_date }}</p>
                         @endif
                 </div>
             </div>
