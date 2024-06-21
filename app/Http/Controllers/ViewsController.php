@@ -9,21 +9,22 @@ class ViewsController extends Controller
 {
     public function index()
     {
-        $vehicles = null;
+        $query = Vehicle::query();
+
         if (!is_null(request('category'))) {
-            $vehicles = Vehicle::where('category', request('category'))->get()->map(function ($vehicle) {
-                $image = Attachment::find($vehicle->image);
-                $vehicle->image = $image ? $image->url() : null;
-                return $vehicle;
-            });
-        } else {
-            $vehicles = Vehicle::all()->map(function ($vehicle) {
-                $image = Attachment::find($vehicle->image);
-                $vehicle->image = $image ? $image->url() : null;
-                return $vehicle;
-            });
+            $query->where('category', request('category'));
         }
 
+        if (!is_null(request('sort'))) {
+            $sortOrder = request('sort') === 'asc' ? 'asc' : 'desc';
+            $query->orderBy('price', $sortOrder);
+        }
+
+        $vehicles = $query->get()->map(function ($vehicle) {
+            $image = Attachment::find($vehicle->image);
+            $vehicle->image = $image ? $image->url() : null;
+            return $vehicle;
+        });
 
         return view("index", [
             'vehicles' => $vehicles,

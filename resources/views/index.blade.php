@@ -20,6 +20,16 @@
                     </select>
                 </div>
                 <button type="submit" class="btn btn-primary">Фильтр</button>
+                <div class="form-group">
+                    <br>
+                    <label for="sort">Сортировка по цене:</label>
+                    <select class="form-control" id="sort" name="sort">
+                        <option value="">Без сортировки</option>
+                        <option value="asc" {{ request('sort') == 'asc' ? 'selected' : '' }}>По возрастанию</option>
+                        <option value="desc" {{ request('sort') == 'desc' ? 'selected' : '' }}>По убыванию</option>
+                    </select>
+                </div>
+                <button type="submit" class="btn btn-primary">Фильтр</button><br>
             </form>
             <h2 class="my-4">Выберите машину</h2>
         </div>
@@ -30,7 +40,7 @@
                     <div class="card-body">
                         <h2 class="card-title">{{ $vehicle->model }} {{ $vehicle->brand }}</h2>
                         <p class="card-title">Год выпуска: {{ $vehicle->year }}</p>
-                        <p class="card-title">Кузов: {{ $vehicle->category }}</p>
+                        <p class="card-title">{{ $vehicle->category }}</p>
                         <p class="card-title">Водитель: {{ $vehicle->driver->name }}</p>
                         <p class="card-text">Стаж (в годах): {{ $vehicle->driver->experience }}</p>
                         <p class="card-title">Цена: {{ $vehicle->price }} руб.</p>
