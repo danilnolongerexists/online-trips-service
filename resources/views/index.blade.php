@@ -4,8 +4,26 @@
     <div class="row">
         <div class="col-md-12">
             <h1 class="my-4">Главная</h1>
-            <p class="lead">Выберите машину</p>
         </div>
+
+        <div class="col-md-12 mb-4">
+            <form method="GET" action="{{ route('index') }}">
+                <div class="form-group">
+                    <label for="category">Выберите кузов:</label>
+                    <select class="form-control" id="category" name="category">
+                        <option value="">Все</option>
+                        @foreach($vehicles as $vehicle)
+                            <option value="{{ $vehicle->category }}" {{ request('category') == $vehicle->category ? 'selected' : '' }}>
+                                {{ $vehicle->category }}
+                            </option>
+                        @endforeach
+                    </select>
+                </div>
+                <button type="submit" class="btn btn-primary">Фильтр</button>
+            </form>
+            <h2 class="my-4">Выберите машину</h2>
+        </div>
+
         @foreach ($vehicles as $vehicle)
             <div class="col-md-4 mb-4">
                 <div class="card h-100">

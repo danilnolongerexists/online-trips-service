@@ -9,11 +9,21 @@ class ViewsController extends Controller
 {
     public function index()
     {
-        $vehicles = Vehicle::all()->map(function ($vehicle) {
-            $image = Attachment::find($vehicle->image);
-            $vehicle->image = $image ? $image->url() : null;
-            return $vehicle;
-        });
+        $vehicles = null;
+        if (!is_null(request('category'))) {
+            $vehicles = Vehicle::where('category', request('category'))->get()->map(function ($vehicle) {
+                $image = Attachment::find($vehicle->image);
+                $vehicle->image = $image ? $image->url() : null;
+                return $vehicle;
+            });
+        } else {
+            $vehicles = Vehicle::all()->map(function ($vehicle) {
+                $image = Attachment::find($vehicle->image);
+                $vehicle->image = $image ? $image->url() : null;
+                return $vehicle;
+            });
+        }
+
 
         return view("index", [
             'vehicles' => $vehicles,
