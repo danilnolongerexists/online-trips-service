@@ -22,7 +22,7 @@
                 <ul class="navbar-nav">
                     @auth
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('orders') }}">Заказы</a>
+                            <a class="nav-link" href="{{ route('orders') }}">Профиль</a>
                         </li>
 
                         <li class="nav-item">

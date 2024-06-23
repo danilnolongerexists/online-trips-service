@@ -41,11 +41,6 @@ class ViewsController extends Controller
         return view("pages.login");
     }
 
-    // public function profile()
-    // {
-    //     return view("pages.profile");
-    // }
-
     public function orders()
     {
         return view("pages.orders");

@@ -29,7 +29,7 @@
                         <option value="desc" {{ request('sort') == 'desc' ? 'selected' : '' }}>По убыванию</option>
                     </select>
                 </div>
-                <button type="submit" class="btn btn-primary">Фильтр</button><br>
+                <button type="submit" class="btn btn-primary">Сортировка</button><br>
             </form>
             <h2 class="my-4">Выберите машину</h2>
         </div>

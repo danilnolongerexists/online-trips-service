@@ -27,7 +27,8 @@ class ActionsController extends Controller
 
         $user = User::create($request -> input('user'));
         Auth::login($user);
-        return redirect('/');
+        return redirect('/')->with('success', 'Вы успешно зарегистрировались,' . $user->name . '!');
+
     }
 
     public function logout()
@@ -49,7 +50,8 @@ class ActionsController extends Controller
             'user.password.alpha_dash'=> 'Поле "Пароль" должно содержать только строчные и прописные символы латиницы, цифры, а также символы "-" и "_"',
         ]);
         if(Auth::attempt($request -> input('user'))) {
-            return redirect('/');
+            $user = Auth::user();
+            return redirect('/')->with('success', 'С возвращением, ' . $user->name . '!');
         } else {
             return back() -> withErrors([
                 'user.email' => 'Предоставленная почта или пароль не подходят'
